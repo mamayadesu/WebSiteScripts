@@ -1,7 +1,7 @@
 <?php
 ##############################
-$filename = "text.txt"; // файл, в который будет записываться информация
-$clear_file_before_write = true; // очищать файл перед записью. true - да, false - нет
+$filename = "text.txt"; // файл, в который будет записываться информация // file in which information will record
+$clear_file_before_record = true; // очищать файл перед записью. true - да, false - нет // clear file before record
 ##############################
 
 $posts_result = null;
@@ -25,7 +25,7 @@ for($i = -1; $i ++< $requests;) {
     $requests_result = $request_keys[$i]." => ".$_REQUEST[$request_keys[$i]]."\n".$requests_result;
 }
 
-if(! $clear_file_before_write) {
+if(! $clear_file_before_record) {
     $file = fopen($filename, "a");
 
     fwrite($file, "######################################\n# ".date("H:i:s d.m.Y", time())." FROM ".$_SERVER['REMOTE_ADDR']."\n######################################\n################ POST ################\n$posts_result\n\n\n################ GET ################\n$gets_result\n\n\n################ REQUEST ################\n$requests_result\n\n\n\n\n");
