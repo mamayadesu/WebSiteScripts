@@ -26,7 +26,7 @@ for($i = -1; $i ++< $requests;) {
 }
 
 if(! $clear_file_before_write) {
-    $file = fopen("test.txt", "a");
+    $file = fopen($filename, "a");
 
     fwrite($file, "######################################\n# ".date("H:i:s d.m.Y", time())." FROM ".$_SERVER['REMOTE_ADDR']."\n######################################\n################ POST ################\n$posts_result\n\n\n################ GET ################\n$gets_result\n\n\n################ REQUEST ################\n$requests_result\n\n\n\n\n");
 
