@@ -1,7 +1,7 @@
 <?php
 ##############################
-$filename = "text.txt"; // файл, в который будет записываться информация // file in which requests will register
-$clear_file_before_record = true; // очищат файл перед записью // to clear file before record
+$filename = "text.txt"; // файл, в который будет записываться информация
+$clear_file_before_write = true; // очищать файл перед записью. true - да, false - нет
 ##############################
 
 $posts_result = null;
@@ -25,13 +25,13 @@ for($i = -1; $i ++< $requests;) {
     $requests_result = $request_keys[$i]." => ".$_REQUEST[$request_keys[$i]]."\n".$requests_result;
 }
 
-if(! $clear_file_before_record) {
+if(! $clear_file_before_write) {
     $file = fopen("test.txt", "a");
 
     fwrite($file, "######################################\n# ".date("H:i:s d.m.Y", time())." FROM ".$_SERVER['REMOTE_ADDR']."\n######################################\n################ POST ################\n$posts_result\n\n\n################ GET ################\n$gets_result\n\n\n################ REQUEST ################\n$requests_result\n\n\n\n\n");
 
     fclose($file);
 } else {
-    file_put_contents($file, "######################################\n# ".date("H:i:s d.m.Y", time())." FROM ".$_SERVER['REMOTE_ADDR']."\n######################################\n################ POST ################\n$posts_result\n\n\n################ GET ################\n$gets_result\n\n\n################ REQUEST ################\n$requests_result\n\n\n\n\n");
+    file_put_contents($filename, "######################################\n# ".date("H:i:s d.m.Y", time())." FROM ".$_SERVER['REMOTE_ADDR']."\n######################################\n################ POST ################\n$posts_result\n\n\n################ GET ################\n$gets_result\n\n\n################ REQUEST ################\n$requests_result\n\n\n\n\n");
 }
 ?>
